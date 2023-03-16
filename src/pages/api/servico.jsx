@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 
 const App = () => {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(null)
 
   useEffect(() => {
     const getToken = async () => {
       // código para obter o token
-      setToken(tokenFromApi);
-    };
+      setToken(tokenFromApi)
+    }
 
-    getToken();
-  }, []);
+    getToken()
+  }, [])
 
-  return <div>{token ? <p>Token: {token}</p> : <p>Loading...</p>}</div>;
-};
+  return <div>{token ? <p>Token: {token}</p> : <p>Loading...</p>}</div>
+}
 
-export default App;
+export default App

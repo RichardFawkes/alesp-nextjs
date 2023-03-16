@@ -1,43 +1,56 @@
-import AppBar from '@mui/material/AppBar';
-import Stack from '@mui/material/Stack';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar'
+import Stack from '@mui/material/Stack'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
+import IconButton from '@mui/material/IconButton'
+import MenuIcon from '@mui/icons-material/Menu'
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 
-export default function Header({
+import useStyles from './styles'
+
+interface HeaderProps {
+  titleHeader?: string
+  backgroundColor?: string
+  subtitleHeader?: string
+}
+
+const Header: React.FC<HeaderProps> = ({
   titleHeader = 'PL TITLE',
   backgroundColor = '#262454',
   subtitleHeader = 'P0PL0Mock',
-}) {
-  const darkTheme = createTheme({
+}) => {
+  const classes = useStyles()
+
+  const theme = createTheme({
     palette: {
       primary: {
         main: backgroundColor,
       },
     },
-  });
+  })
+
   return (
-    <Stack spacing={2} sx={{ flexGrow: 2 }}>
-      <ThemeProvider theme={darkTheme}>
-        <AppBar position="static" color="primary" enableColorOnDark>
-          {appBarLabel(titleHeader)}
-        </AppBar>
-      </ThemeProvider>
-    </Stack>
-  );
+    <ThemeProvider theme={theme}>
+      <AppBar position="static">
+        <Toolbar
+          className={classes.header}
+          // style={{
+          //   border: '1px solid #262454',
+          //   borderRadius: 3,
+          //   fontSize: 16,
+          //   textTransform: 'uppercase',
+          //   minHeight: 35,
+          // }}
+        >
+          <Typography
+            style={{ fontSize: 16, fontWeight: 600, marginBottom: 0 }}
+          >
+            {titleHeader}
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </ThemeProvider>
+  )
 }
 
-function appBarLabel(label: string) {
-  return (
-    <Toolbar>
-      {/* <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-        <MenuIcon />
-      </IconButton> */}
-      <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-        {label}
-      </Typography>
-    </Toolbar>
-  );
-}
+export default Header

@@ -7,12 +7,15 @@ import Header from '@/components/Header/Header';
 import TableList from '@/components/Table/Table';
 import { Card, ListItemButton } from '@mui/material/';
 import { BtnPrimary } from '@/components/Button/Buttons';
+import { makeStyles } from '@mui/styles';
+import useStyles from './styles';
 
 const Autocomplete = () => {
+  const classes = useStyles();
   const [orgaos, setOrgaos] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [highlightedIndex, setHighlightedIndex] = useState(null);
-  const [selectedItemId, setSelectedItemId] = useState();
+  const [selectedItemId, setSelectedItemId] = useState('');
   const [selectedItemName, setSelectedItemName] = useState('');
 
   useEffect(() => {
