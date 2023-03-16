@@ -1,33 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import { makeStyles } from '@mui/styles';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import { makeStyles } from '@mui/styles'
 
 const useStyles = makeStyles({
   title: {},
-});
+})
 
 const TableList = ({ idOrgaoProps } = 0) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
-  const [detalhesCargo, setDetalhesCargo] = useState([]);
+  const [detalhesCargo, setDetalhesCargo] = useState([])
 
   useEffect(() => {
     if (idOrgaoProps) {
       axios
         .get(
-          `http://localhost:8084/api/v1/p1tl1/detalhar-cargo-vaga?idWrkRegistro=0&idCargo=&idOrgao=${idOrgaoProps}`
+          `http://localhost:8084/api/v1/p1tl1/detalhar-cargo-vaga?idWrkRegistro=0&idCargo=&idOrgao=${idOrgaoProps}`,
         )
         .then((res) => {
-          setDetalhesCargo(res.data);
-        });
+          setDetalhesCargo(res.data)
+        })
     }
-  }, [idOrgaoProps]);
+  }, [idOrgaoProps])
 
   return (
     <div>
@@ -80,7 +80,7 @@ const TableList = ({ idOrgaoProps } = 0) => {
         </TableContainer>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default TableList;
+export default TableList
