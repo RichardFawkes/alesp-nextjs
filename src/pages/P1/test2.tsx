@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 const HooksTest = () => {
   const [posts, setPosts] = useState([
-    { id: 1, name: "Cuzin", idade: 10 },
-    { id: 2, name: "Penis", idade: 20 },
+    { id: 1, name: "Pedro", idade: 10 },
+    { id: 2, name: "Joao", idade: 20 },
   ]);
 
-  const newPost = { id: 11, name: "Penis", idade: 20 };
+  const newPost = { id: 11, name: "Jorge", idade: 20 };
 
   const postLenght = posts.length;
 

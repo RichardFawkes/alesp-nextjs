@@ -1,30 +1,25 @@
-import React, { useState, useEffect, ReactComponentElement } from 'react';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-import axios from 'axios';
-import ListItem from '@mui/material/ListItem';
-import Header from '@/components/Header/Header';
-import TableList from '@/components/Table/Table';
-import { Card, ListItemButton } from '@mui/material/';
-import { BtnPrimary } from '@/components/Button/Buttons';
-import { makeStyles } from '@mui/styles';
-import useStyles from './styles';
+import React, { useState, useEffect } from "react";
+import Input from "@mui/material/Input";
+import InputLabel from "@mui/material/InputLabel";
+import axios from "axios";
+import Header from "@/components/Header/Header";
+import TableList from "@/components/Table/Table";
+import { Card, ListItemButton } from "@mui/material/";
 
 const Autocomplete = () => {
-  const classes = useStyles();
   const [orgaos, setOrgaos] = useState([]);
-  const [inputValue, setInputValue] = useState('');
-  const [highlightedIndex, setHighlightedIndex] = useState(null);
-  const [selectedItemId, setSelectedItemId] = useState('');
-  const [selectedItemName, setSelectedItemName] = useState('');
+  const [inputValue, setInputValue] = useState("");
+  // const [highlightedIndex, setHighlightedIndex] = useState(null);
+  const [selectedItemId, setSelectedItemId] = useState("");
+  const [selectedItemName, setSelectedItemName] = useState("");
 
   useEffect(() => {
     axios
-      .get('http://localhost:8084/api/v1/p1tl1/pesquisar-nomes-orgaos')
+      .get("http://localhost:8084/api/v1/p1tl1/pesquisar-nomes-orgaos")
       .then((res) => {
         setOrgaos(res.data);
       });
-  }, []);
+  }, [orgaos]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -35,7 +30,7 @@ const Autocomplete = () => {
   const handleItemClick = (item: any) => {
     setSelectedItemName(item.label);
     setSelectedItemId(item.value);
-    setInputValue('');
+    setInputValue("");
   };
   return (
     <>
@@ -55,7 +50,7 @@ const Autocomplete = () => {
         onChange={handleInputChange}
         fullWidth
       />
-      {inputValue !== '' && (
+      {inputValue !== "" && (
         <div>
           <Card>
             {orgaos
