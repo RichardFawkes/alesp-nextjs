@@ -19,6 +19,7 @@ const HooksTest = () => {
       </button>
       {<p>Quantidade: {postLenght}</p>}
       <b>Teste2</b>
+      <b>Teste02</b>
     </>
   );
 };
