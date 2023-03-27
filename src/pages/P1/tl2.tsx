@@ -15,8 +15,6 @@ export default function MinhaPagina() {
     setContador(contador + 1);
   };
 
-  const inputRef = useRef("gay");
-
   const handleClick = () => {
     inputRef.current.focus();
   };
